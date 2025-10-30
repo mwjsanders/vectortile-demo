@@ -1,0 +1,18 @@
+<mat-grid-list cols="2">
+  <mat-grid-tile>
+    <mat-form-field appearance="outline">
+      <mat-form-field>
+        <mat-label>Selecteer sluis</mat-label>
+        <mat-select [(value)]="selectedLock" (selectionChange)="onSelectLock($event.value)">
+          @for (lock of locks; track lock) {
+            <mat-option [value]="lock">{{lock.name}}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </mat-form-field>
+  </mat-grid-tile>
+  <mat-grid-tile class="map-tile">
+    <app-map style="width: 100%; height: 100%;"></app-map>
+  </mat-grid-tile>
+
+</mat-grid-list>
