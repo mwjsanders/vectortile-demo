@@ -31,11 +31,11 @@ jobs:
         run: |
           echo "Contents of dist folder:"
           ls -R dist
-          cp dist/vectortile-demo/index.html dist/vectortile-demo/404.html
+          cp dist/vectortile-demo/browser/index.html dist/vectortile-demo/browser/404.html
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist/vectortile-demo
+          publish_dir: ./dist/vectortile-demo/browser
           publish_branch: gh-pages
