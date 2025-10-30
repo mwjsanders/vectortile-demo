@@ -1,0 +1,643 @@
+{
+  "version": 8,
+  "metadata": {
+    "ol:webfonts": "https://api.pdok.nl/kadaster/brt-achtergrondkaart/ogc/v1/resources/fonts/{font-family}/{fontweight}{-fontstyle}.css",
+    "gokoala:title-items": "id"
+  },
+  "name": "",
+  "id": "achtergrondkaart_darkmode",
+  "pitch": 0,
+  "center": [
+    5.3878,
+    52.1561
+  ],
+  "glyphs": "https://api.pdok.nl/kadaster/brt-achtergrondkaart/ogc/v1/resources/fonts/{fontstack}/{range}.pbf",
+  "layers": [
+    {
+      "id": "Onderlegger Nederland",
+      "type": "fill",
+      "paint": {
+        "fill-color": [
+          "match",
+          [
+            "get",
+            "vistext"
+          ],
+          "land/grens (NL)",
+          "#2C2C2C",
+          "(zee)water",
+          "#215374",
+          "onderlegger Nederland",
+          "#2C2C2C",
+          "transparent"
+        ]
+      },
+      "source": "brt",
+      "source-layer": "nederland"
+    },
+    {
+      "id": "waterdeelvlak",
+      "type": "fill",
+      "paint": {
+        "fill-color": [
+          "match",
+          [
+            "get",
+            "vistext"
+          ],
+          "zee",
+          "#215374",
+          "meer, plas",
+          "#215374",
+          "droogvallend",
+          "#3A6A8E",
+          "waterloop",
+          "#215374",
+          "transparent"
+        ]
+      },
+      "source": "brt",
+      "source-layer": "waterdeelvlak"
+    },
+    {
+      "id": "Bodemgebruik",
+      "type": "fill",
+      "paint": {
+        "fill-color": [
+          "match",
+          [
+            "get",
+            "vistext"
+          ],
+          "steenglooing",
+          "#3A3A3A",
+          "zand",
+          "#7E7E7E",
+          "Zand met dras, moeras, riet",
+          "#7E7E7E",
+          "heide",
+          "#9A6A8E",
+          "Heide met dras, moeras, riet",
+          "#9A6A8E",
+          "bos",
+          "#5A7E5A",
+          "Bos met dras, moeras, riet",
+          "#5A7E5A",
+          "bebouwd gebied",
+          "#3A3A3A",
+          "aanlegsteiger",
+          "#5A5A5A",
+          "zee",
+          "#215374",
+          "meer, plas",
+          "#215374",
+          "transparent"
+        ]
+      },
+      "source": "brt",
+      "source-layer": "terreinvlak"
+    },
+    {
+      "id": "Gebouw",
+      "type": "fill",
+      "paint": {
+        "fill-color": "#5A5A5A"
+      },
+      "source": "brt",
+      "source-layer": "gebouwvlak"
+    },
+    {
+      "id": "wegdeellijn-contour",
+      "type": "line",
+      "source": "brt",
+      "source-layer": "wegdeellijn",
+      "paint": {
+        "line-width": [
+          "match",
+          [
+            "get",
+            "vistext"
+          ],
+          "E-weg",
+          5,
+          "autosnelweg",
+          4,
+          "autosnelweg op brug",
+          4,
+          1
+        ],
+        "line-color": [
+          "match",
+          [
+            "get",
+            "vistext"
+          ],
+          "E-weg",
+          "#FF9900",
+          "autosnelweg",
+          "#FF9900",
+          "autosnelweg op brug",
+          "#FF9900",
+          "hoofdweg",
+          "#FFD700",
+          "hoofdweg op brug",
+          "#FFD700",
+          "autosnelweg oprit/afrit",
+          "#FF9900",
+          "hoofdweg oprit/afrit",
+          "#B0B0B0",
+          "regionale weg",
+          "#B0B0B0",
+          "regionale weg op brug",
+          "#B0B0B0",
+          "autosnelweg in tunnel",
+          "#7A7A7A",
+          "regionale weg in tunnel",
+          "#7A7A7A",
+          "lokale weg in tunnel",
+          "#7A7A7A",
+          "hoofdweg in tunnel",
+          "#7A7A7A",
+          "lokale weg",
+          "#B0B0B0",
+          "lokale weg op brug",
+          "#B0B0B0",
+          "regionale weg oprit/afrit",
+          "#B0B0B0",
+          "straat in tunnel",
+          "#7A7A7A",
+          "straat",
+          "#B0B0B0",
+          "straat op brug",
+          "#B0B0B0",
+          "overig",
+          "#B0B0B0",
+          "fietspad",
+          "#B0B0B0",
+          "transparent"
+        ]
+      }
+    },
+    {
+      "id": "wegdeellijn",
+      "type": "line",
+      "source": "brt",
+      "source-layer": "wegdeellijn",
+      "paint": {
+        "line-width": [
+          "match",
+          [
+            "get",
+            "vistext"
+          ],
+          "E-weg",
+          3,
+          "autosnelweg",
+          2,
+          "autosnelweg op brug",
+          2,
+          1
+        ],
+        "line-color": [
+          "match",
+          [
+            "get",
+            "vistext"
+          ],
+          "E-weg",
+          "#FFD700",
+          "autosnelweg",
+          "#FFD700",
+          "autosnelweg op brug",
+          "#FFD700",
+          "hoofdweg",
+          "#FFD700",
+          "hoofdweg op brug",
+          "#FFD700",
+          "autosnelweg oprit/afrit",
+          "#FFD700",
+          "hoofdweg oprit/afrit",
+          "#FFD700",
+          "regionale weg",
+          "#FFD700",
+          "regionale weg op brug",
+          "#FFD700",
+          "autosnelweg in tunnel",
+          "#7A7A7A",
+          "regionale weg in tunnel",
+          "#7A7A7A",
+          "lokale weg in tunnel",
+          "#7A7A7A",
+          "hoofdweg in tunnel",
+          "#7A7A7A",
+          "lokale weg",
+          "#FFFFFF",
+          "lokale weg op brug",
+          "#FFFFFF",
+          "regionale weg oprit/afrit",
+          "#FFD700",
+          "straat in tunnel",
+          "#7A7A7A",
+          "straat",
+          "#FFFFFF",
+          "straat op brug",
+          "#FFFFFF",
+          "overig",
+          "#B0B0B0",
+          "fietspad",
+          "#B0B0B0",
+          "transparent"
+        ]
+      }
+    },
+    {
+      "id": "wegdeelvlak",
+      "type": "fill",
+      "paint": {
+        "fill-color": [
+          "match",
+          [
+            "get",
+            "vistext"
+          ],
+          "E-weg",
+          "#FFD700",
+          "autosnelweg",
+          "#FFD700",
+          "autosnelweg op brug",
+          "#FFD700",
+          "hoofdweg",
+          "#FFD700",
+          "hoofdweg op brug",
+          "#FFD700",
+          "autosnelweg oprit/afrit",
+          "#FFD700",
+          "hoofdweg oprit/afrit",
+          "#FFD700",
+          "regionale weg",
+          "#FFD700",
+          "regionale weg op brug",
+          "#FFD700",
+          "autosnelweg in tunnel",
+          "#7A7A7A",
+          "regionale weg in tunnel",
+          "#7A7A7A",
+          "lokale weg in tunnel",
+          "#7A7A7A",
+          "hoofdweg in tunnel",
+          "#7A7A7A",
+          "lokale weg",
+          "#FFD700",
+          "lokale weg op brug",
+          "#FFFFFF",
+          "regionale weg oprit/afrit",
+          "#FFD700",
+          "straat in tunnel",
+          "#7A7A7A",
+          "straat",
+          "#FFFFFF",
+          "straat op brug",
+          "#FFFFFF",
+          "overig",
+          "#FFFFFF",
+          "fietspad",
+          "#B0B0B0",
+          "transparent"
+        ],
+        "fill-outline-color": [
+          "match",
+          [
+            "get",
+            "vistext"
+          ],
+          "E-weg",
+          "#FF9900",
+          "autosnelweg",
+          "#FF9900",
+          "autosnelweg op brug",
+          "#FF9900",
+          "hoofdweg",
+          "#FFD700",
+          "hoofdweg op brug",
+          "#FFD700",
+          "autosnelweg oprit/afrit",
+          "#FF9900",
+          "hoofdweg oprit/afrit",
+          "#B0B0B0",
+          "regionale weg",
+          "#B0B0B0",
+          "regionale weg op brug",
+          "#B0B0B0",
+          "autosnelweg in tunnel",
+          "#7A7A7A",
+          "regionale weg in tunnel",
+          "#7A7A7A",
+          "lokale weg in tunnel",
+          "#7A7A7A",
+          "hoofdweg in tunnel",
+          "#7A7A7A",
+          "lokale weg",
+          "#B0B0B0",
+          "lokale weg op brug",
+          "#B0B0B0",
+          "regionale weg oprit/afrit",
+          "#B0B0B0",
+          "straat in tunnel",
+          "#7A7A7A",
+          "straat",
+          "#B0B0B0",
+          "straat op brug",
+          "#B0B0B0",
+          "overig",
+          "#B0B0B0",
+          "fietspad",
+          "#B0B0B0",
+          "transparent"
+        ]
+      },
+      "source": "brt",
+      "source-layer": "wegdeelvlak"
+    },
+    {
+      "id": "registratiefgebiedlijn",
+      "type": "line",
+      "source": "brt",
+      "source-layer": "registratiefgebiedlijn",
+      "paint": {
+        "line-color": [
+          "match",
+          [
+            "get",
+            "vistext"
+          ],
+          "land/grens (NL)",
+          "#808080",
+          "landsgrens (NL-BE, NL-DE)",
+          "#B2B2B2",
+          "provinciegrens",
+          "#B2B2B2",
+          "transparent"
+        ],
+        "line-width": [
+          "interpolate",
+          [
+            "linear"
+          ],
+          [
+            "zoom"
+          ],
+          0,
+          [
+            "match",
+            [
+              "get",
+              "vistext"
+            ],
+            "land/grens (NL)",
+            0.1,
+            "landsgrens (NL-BE, NL-DE)",
+            0.5,
+            "provinciegrens",
+            0.1,
+            0.05
+          ],
+          14,
+          [
+            "match",
+            [
+              "get",
+              "vistext"
+            ],
+            "land/grens (NL)",
+            0.2,
+            "landsgrens (NL-BE, NL-DE)",
+            1,
+            "provinciegrens",
+            0.4,
+            0.1
+          ]
+        ]
+      }
+    },
+    {
+      "id": "spoorbaandeellijn",
+      "type": "line",
+      "source": "brt",
+      "source-layer": "spoorbaandeellijn",
+      "paint": {
+        "line-color": [
+          "match",
+          [
+            "get",
+            "vistext"
+          ],
+          "treinspoor",
+          "#828282",
+          "metro / sneltram",
+          "#828282",
+          "tram",
+          "#828282",
+          "spoor in tunnel",
+          "#828282",
+          "metro / sneltram in tunnel",
+          "#828282",
+          "overig",
+          "#AEA9A9",
+          "#828282"
+        ],
+        "line-width": [
+          "match",
+          [
+            "get",
+            "vistext"
+          ],
+          "tram",
+          1,
+          "metro / sneltram in tunnel",
+          6,
+          4
+        ]
+      }
+    },
+    {
+      "id": "treinspoor",
+      "type": "line",
+      "source": "brt",
+      "filter": [
+        "in",
+        "vistext",
+        "treinspoor",
+        "overig"
+      ],
+      "source-layer": "spoorbaandeellijn",
+      "layout": {
+        "line-join": "round"
+      },
+      "paint": {
+        "line-dasharray": [
+          12,
+          10
+        ],
+        "line-color": "#FFFFFF",
+        "line-width": 1.8
+      }
+    },
+    {
+      "id": "metro",
+      "type": "line",
+      "source": "brt",
+      "filter": [
+        "in",
+        "vistext",
+        "metro / sneltram"
+      ],
+      "source-layer": "spoorbaandeellijn",
+      "layout": {
+        "line-join": "round"
+      },
+      "paint": {
+        "line-dasharray": [
+          12,
+          12
+        ],
+        "line-color": "#828282",
+        "line-width": 6
+      }
+    },
+    {
+      "id": "tram",
+      "type": "line",
+      "source": "brt",
+      "source-layer": "spoorbaandeellijn",
+      "filter": [
+        "in",
+        "vistext",
+        "tram"
+      ],
+      "layout": {
+        "line-join": "miter"
+      },
+      "paint": {
+        "line-dasharray": [
+          0.2,
+          8
+        ],
+        "line-color": "#3F4029",
+        "line-width": 8
+      }
+    },
+    {
+      "id": "metro / sneltram in tunnel",
+      "type": "line",
+      "source": "brt",
+      "source-layer": "spoorbaandeellijn",
+      "filter": [
+        "in",
+        "vistext",
+        "metro / sneltram in tunnel"
+      ],
+      "layout": {
+        "line-join": "miter"
+      },
+      "paint": {
+        "line-dasharray": [
+          0.8,
+          2
+        ],
+        "line-color": "#FFFFFF",
+        "line-width": 8
+      }
+    },
+    {
+      "id": "metro / sneltram in tunnel 2",
+      "type": "line",
+      "source": "brt",
+      "source-layer": "spoorbaandeellijn",
+      "filter": [
+        "in",
+        "vistext",
+        "metro / sneltram in tunnel"
+      ],
+      "layout": {
+        "line-join": "miter"
+      },
+      "paint": {
+        "line-color": "#FFFFFF",
+        "line-width": 4
+      }
+    },
+    {
+      "id": "inrichtingselement lijn",
+      "type": "line",
+      "source": "brt",
+      "source-layer": "inrichtingselementlijn",
+      "paint": {
+        "line-color": [
+          "match",
+          [
+            "get",
+            "vistext"
+          ],
+          "hekwerk",
+          "#A4A4A4",
+          "geluidswering",
+          "#828282",
+          "aanlegsteiger",
+          "#B2B2B2",
+          "hoogspanningsleiding",
+          "#828282",
+          "kabelbaan",
+          "#000000",
+          "muur",
+          "#A4A4A4",
+          "transparent"
+        ]
+      },
+      "line-width": [
+        "match",
+        [
+          "get",
+          "vistext"
+        ],
+        "hekwerk",
+        0.5,
+        "geluidswering",
+        1.5,
+        "aanlegsteiger",
+        1.5,
+        "hoogspanningsleiding",
+        0.3,
+        "kabelbaan",
+        0.5,
+        "muur",
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "id": "hoogspanningsmast inrichtingselement_punt",
+      "type": "circle",
+      "source": "brt",
+      "source-layer": "inrichtingselementpunt",
+      "filter": [
+        "==",
+        "vistext",
+        "hoogspanningsmast"
+      ],
+      "paint": {
+        "circle-color": "#828282",
+        "circle-radius": 2
+      }
+    }
+  ],
+  "sources": {
+    "brt": {
+      "type": "vector",
+      "tiles": [
+        "https://api.pdok.nl/kadaster/brt-achtergrondkaart/ogc/v1/tiles/WebMercatorQuad/{z}/{y}/{x}?f=mvt"
+      ],
+      "minzoom": 0,
+      "maxzoom": 17
+    }
+  }
+}
