@@ -8,8 +8,6 @@ import VectorTileLayer from 'ol/layer/VectorTile';
 import VectorTileSource from 'ol/source/VectorTile';
 import MVT from 'ol/format/MVT';
 import {applyStyle} from 'ol-mapbox-style';
-import ol from 'ol/dist/ol';
-import math = ol.math;
 
 @Component({
   selector: 'app-map',
