@@ -8,6 +8,8 @@ import VectorTileLayer from 'ol/layer/VectorTile';
 import VectorTileSource from 'ol/source/VectorTile';
 import MVT from 'ol/format/MVT';
 import {applyStyle} from 'ol-mapbox-style';
+import ol from 'ol/dist/ol';
+import math = ol.math;
 
 @Component({
   selector: 'app-map',
@@ -34,7 +36,7 @@ export class MapComponent implements OnInit, OnDestroy {
       ],
       view: new View({
         center: fromLonLat([5.3878, 52.1561]), // Center on The Netherlands
-        zoom: 8,
+        zoom: 9,
       }),
     });
 
@@ -51,12 +53,14 @@ export class MapComponent implements OnInit, OnDestroy {
     this.map.addControl(mousePositionControl);
   }
 
-  zoomToCoordinate(lon: number, lat: number) {
+  zoomToCoordinate(lon: number, lat: number, orientation: number) {
     const view = this.map.getView();
     view.animate({
       center: fromLonLat([lon, lat]),
       zoom: 14,
-      duration: 500,
+      rotation: Math.PI * orientation/180,
+      duration: 1000,
+
     });
   }
 

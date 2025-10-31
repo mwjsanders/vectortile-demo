@@ -24,8 +24,9 @@ import {MatGridList, MatGridTile} from '@angular/material/grid-list';
 export class LockviewerComponent {
   locksForm = new FormControl('');
   locks: Lock[] = [
-    { name: 'Krammersluis', location:  {lon: 4.1613, lat: 51.6614} },
-    { name: 'Roompotsluis', location:  {lon: 3.6849, lat: 51.6186 }},
+    { name: 'Krammersluis', location:  {lon: 4.1613, lat: 51.6614}, orientation: 4 },
+    { name: 'Roompotsluis', location:  {lon: 3.6849, lat: 51.6186}, orientation: -6},
+    { name: 'Terneuzen', location: {lon: 4.23, lat: 51.445}, orientation: -84 },
   ];
   @ViewChild(MapComponent) mapComponent!: MapComponent;
 
@@ -34,7 +35,7 @@ export class LockviewerComponent {
   onSelectLock(lock: Lock) {
     if (this.mapComponent) {
       console.log(lock)
-      this.mapComponent.zoomToCoordinate(lock.location.lon, lock.location.lat);
+      this.mapComponent.zoomToCoordinate(lock.location.lon, lock.location.lat, lock.orientation);
     }
   }
 }
@@ -46,4 +47,5 @@ export interface Location {
 export interface Lock {
   name: string;
   location: Location;
+  orientation: number
 }
