@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import {Component, OnInit, OnDestroy, ViewChild, ElementRef, AfterViewInit, ViewContainerRef} from '@angular/core';
 import Map from 'ol/Map';
 import View from 'ol/View';
 import MousePosition from 'ol/control/MousePosition.js';
@@ -8,29 +8,40 @@ import VectorTileLayer from 'ol/layer/VectorTile';
 import VectorTileSource from 'ol/source/VectorTile';
 import MVT from 'ol/format/MVT';
 import {applyStyle} from 'ol-mapbox-style';
+import {Style} from '../model/style';
+import {StyleselectorComponent} from './styleselector/styleselector.component';
+import {Control} from 'ol/control';
 
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.css'],
+  imports: [
+  ]
 })
-export class MapComponent implements OnInit, OnDestroy {
+export class MapComponent implements  OnDestroy, AfterViewInit {
+  @ViewChild('mapContainer', { static: true }) mapContainer!: ElementRef<HTMLDivElement>;
+  @ViewChild('controlHost', { read: ViewContainerRef }) controlHost!: ViewContainerRef;
+
   private map!: Map;
+  private brtaBaseVTLayer =  new VectorTileLayer({
+    source: new VectorTileSource({
+      format: new MVT(),
+      url: 'https://api.pdok.nl/kadaster/brt-achtergrondkaart/ogc/v1/tiles/WebMercatorQuad/{z}/{y}/{x}?f=mvt',
+    }),
+  })
 
-  async ngOnInit() {
+  styles: Style[] = [
+    { name: "custom dark", url : "assets/styles/wm_dark.json" },
+    { name: "dark", url : "https://api.pdok.nl/kadaster/brt-achtergrondkaart/ogc/v1/styles/darkmode__webmercatorquad?f=json"},
+    { name: "standaard", url : "https://api.pdok.nl/kadaster/brt-achtergrondkaart/ogc/v1/styles/standaard__webmercatorquad?f=json"}
+  ]
 
-    const brtaBaseVTLayer = new VectorTileLayer({
-        source: new VectorTileSource({
-          format: new MVT(),
-          url: 'https://api.pdok.nl/kadaster/brt-achtergrondkaart/ogc/v1/tiles/EuropeanETRS89_LAEAQuad/{z}/{y}/{x}?f=mvt',
-        }),
-      })
-
-
+  ngAfterViewInit() {
     this.map = new Map({
-      target: 'map',
+      target: this.mapContainer.nativeElement,
       layers: [
-        brtaBaseVTLayer
+        this.brtaBaseVTLayer
       ],
       view: new View({
         center: fromLonLat([5.3878, 52.1561]), // Center on The Netherlands
@@ -38,8 +49,23 @@ export class MapComponent implements OnInit, OnDestroy {
       }),
     });
 
-    fetch('assets/styles/wm_dark.json').then(res => res.json())
-      .then(styleJson => applyStyle(brtaBaseVTLayer, styleJson, 'brt'));
+    // --- Create Angular component dynamically ---
+    const compRef = this.controlHost.createComponent(StyleselectorComponent);
+    compRef.instance.styles =this.styles;
+    compRef.instance.styleChange.subscribe((selected) => {
+      this.applyStyleToBRTALayer(selected.url)
+    });
+
+    // --- Wrap Angular component in OL Control ---
+    const olControl = new Control({
+      element: compRef.location.nativeElement,
+    });
+
+    // --- Add to the map ---
+    this.map.addControl(olControl);
+
+
+    this.applyStyleToBRTALayer('assets/styles/wm_dark.json')
 
     const mousePositionControl = new MousePosition({
       coordinateFormat: createStringXY(4), // Show 4 decimal places
@@ -49,6 +75,18 @@ export class MapComponent implements OnInit, OnDestroy {
     });
 
     this.map.addControl(mousePositionControl);
+  }
+
+  onSelectStyle(style: Style) {
+      this.applyStyleToBRTALayer(style.url);
+  }
+
+  applyStyleToBRTALayer(url: string) {
+    fetch(url).then(res => res.json())
+      .then(styleJson => {
+        applyStyle(this.brtaBaseVTLayer, styleJson, 'brt')
+        this.brtaBaseVTLayer.changed();
+      })
   }
 
   zoomToCoordinate(lon: number, lat: number, orientation: number) {

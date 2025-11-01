@@ -1,0 +1,13 @@
+<div class="style-control">
+  <button class="style-btn" (click)="toggleMenu()">🎨</button>
+
+  @if (menuOpen) {
+  <div class="style-menu">
+    @for (style of styles; track style) {
+      <div class="style-item" (click)="selectStyle(style)">
+        {{ style.name }}
+      </div>
+    }
+  </div>
+  }
+</div>

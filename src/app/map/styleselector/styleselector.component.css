@@ -1,0 +1,34 @@
+.style-control {
+  position: absolute;
+  top: 80px;
+  left: 10px;
+  background: white;
+  border-radius: 4px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+  padding: 4px;
+}
+
+.style-btn {
+  background: white;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.style-menu {
+  margin-top: 4px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+  background: white;
+}
+
+.style-item {
+  padding: 6px 10px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.style-item:hover {
+  background: #f0f0f0;
+}
