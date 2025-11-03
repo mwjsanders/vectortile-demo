@@ -1,37 +1,26 @@
 import {Component, ViewChild} from '@angular/core';
 import {MapComponent} from '../../map/map.component';
-import {MatFormField} from '@angular/material/input';
-import {MatLabel} from '@angular/material/form-field';
-import {MatOption, MatSelect, MatSelectChange} from '@angular/material/select';
-import {FormControl, FormsModule} from '@angular/forms';
-import {MatGridList, MatGridTile} from '@angular/material/grid-list';
-import {Style} from '../../model/style';
+import {MatActionList, MatList, MatListItem} from '@angular/material/list';
 
 @Component({
   selector: 'app-lockviewer',
   imports: [
     MapComponent,
-    MatFormField,
-    MatLabel,
-    FormsModule,
-    MatSelect,
-    MatOption,
-    MatGridList,
-    MatGridTile,
+    MatActionList,
+    MatListItem,
   ],
   templateUrl: './lockviewer.component.html',
   styleUrl: './lockviewer.component.css'
 })
 export class LockviewerComponent {
-  locksForm = new FormControl('');
+  @ViewChild(MapComponent) mapComponent!: MapComponent;
+
   locks: Lock[] = [
     { name: 'Krammersluizen', location:  {lon: 4.1613, lat: 51.6614}, orientation: 4 },
     { name: 'Roompotsluis', location:  {lon: 3.6849, lat: 51.6186}, orientation: -6},
-    { name: 'Kreekrakluizen', location: {lon: 4.23, lat: 51.445}, orientation: -84 },
+    { name: 'Kreekraksluizen', location: {lon: 4.23, lat: 51.445}, orientation: -84 },
   ];
   selectedLock?: Lock;
-
-  @ViewChild(MapComponent) mapComponent!: MapComponent;
 
   onSelectLock(lock: Lock) {
     if (this.mapComponent) {

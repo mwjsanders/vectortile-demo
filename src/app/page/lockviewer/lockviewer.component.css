@@ -1,6 +1,11 @@
-.map-tile {
+.map {
   border: 1px solid #ccc;
   height: 100%; /* important */
   width: 100%; /* important */
   position: relative;
+}
+
+.container {
+  display: flex;
+  height: 100%;
 }

@@ -34,7 +34,7 @@ export class MapComponent implements  OnDestroy, AfterViewInit {
   styles: Style[] = [
     { name: "custom dark", url : "assets/styles/wm_dark.json" },
     { name: "dark", url : "https://api.pdok.nl/kadaster/brt-achtergrondkaart/ogc/v1/styles/darkmode__webmercatorquad?f=json"},
-    { name: "standaard", url : "https://api.pdok.nl/kadaster/brt-achtergrondkaart/ogc/v1/styles/standaard__webmercatorquad?f=json"}
+    { name: "standaard", url : "https://api.pdok.nl/kadaster/brt-achtergrondkaart/ogc/v1/styles/standaard_zonder_labels__webmercatorquad?f=json"}
   ]
 
   ngAfterViewInit() {
