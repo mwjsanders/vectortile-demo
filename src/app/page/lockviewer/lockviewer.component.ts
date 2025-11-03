@@ -18,7 +18,7 @@ export class LockviewerComponent {
   locks: Lock[] = [
     { name: 'Krammersluizen', location:  {lon: 4.1613, lat: 51.6614}, orientation: 4 },
     { name: 'Roompotsluis', location:  {lon: 3.6849, lat: 51.6186}, orientation: -6},
-    { name: 'Kreekraksluizen', location: {lon: 4.23, lat: 51.445}, orientation: -84 },
+    { name: 'Kreekraksluizen', location: {lon: 4.23, lat: 51.445}, orientation: -82.7 },
   ];
   selectedLock?: Lock;
 
